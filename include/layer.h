@@ -2,23 +2,23 @@
 #define LAYER_H
 
 typedef struct {
-    int    n_inputs;     /* número de entradas desta camada        */
-    int    n_outputs;    /* número de neurónios (saídas)           */
+    int    n_inputs;     /* number of entries in this layer */
+    int    n_outputs;    /* number of neurons (outputs) */
 
-    float *weights;      /* matriz [n_outputs × n_inputs]          */
+    float *weights;     /* matrix [n_outputs × n_inputs] */
     float *biases;       /* vector [n_outputs]                     */
-    float *activations;  /* vector [n_outputs] - saída dos neuron. */
-    float *deltas;       /* vector [n_outputs] - usado no backprop */
+    float *activations; /* vector [n_outputs] - neuron output. */
+    float *deltas;       /* vector [n_outputs] - used in backprop */
 
 } Layer;
 
-/* Aloca e inicializa uma camada com pesos aleatórios */
+/* Allocates and initializes a layer with random weights */
 Layer *layer_create(int n_inputs, int n_outputs);
 
-/* Liberta toda a memória da camada */
+/* Frees all memory from the layer */
 void   layer_free(Layer *layer);
 
-/* Calcula as activações dado um vector de input */
+/* Calculates the activations given an input vector */
 void   layer_forward(Layer *layer, float *input);
 
 #endif /* LAYER_H */
